@@ -245,7 +245,7 @@ assertFilterStringsWithCommas()
 
 // does the string have a comma in it?
 function filterStringsWithCommas (str) {
-  
+  return (str.indexOf(',') !== -1)
 }
 
 function assertFilterStringsWithCommas () {
@@ -258,9 +258,12 @@ function assertFilterStringsWithCommas () {
  */
 
 // Uncomment when ready to test
-// assertSplitStringByCommas()
+assertSplitStringByCommas()
 
 function splitStringByCommas (str) {
+  if (str.indexOf(',') !== -1) {
+    return str.split(',')
+  }
 }
 
 function assertSplitStringByCommas () {
