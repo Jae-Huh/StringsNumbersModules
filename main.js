@@ -14,6 +14,7 @@ assert(2 + 2, 4, 'test are working!')
 assertGetType()
 
 function getType (thing) {
+  return typeof thing
 }
 
 function assertGetType () {
@@ -27,9 +28,10 @@ function assertGetType () {
  */
 
 // Uncomment when ready to test
-// assertIsNumber()
+assertIsNumber()
 
 function isNumber (thing) {
+  return typeof(thing) === 'number'
 }
 
 function assertIsNumber () {
@@ -43,9 +45,10 @@ function assertIsNumber () {
  */
 
 // Uncomment when ready to test
-// assertIsStringNumber()
+assertIsStringNumber()
 
 function isStringNumber (str) {
+  return Number(str) == str
 }
 
 function assertIsStringNumber () {
@@ -59,9 +62,10 @@ function assertIsStringNumber () {
  */
 
 // Uncomment when ready to test
-// assertToNumber()
+assertToNumber()
 
 function toNumber (str) {
+  return Number(str)
 }
 
 function assertToNumber () {
@@ -74,9 +78,10 @@ function assertToNumber () {
  */
 
 // Uncomment when ready to test
-// assertAdd()
+assertAdd()
 
 function add (a, b) {
+  return a + b
 }
 
 function assertAdd () {
@@ -90,9 +95,10 @@ function assertAdd () {
  */
 
 // Uncomment when ready to test
-// assertAddStrings()
+assertAddStrings()
 
 function addStrings (a, b) {
+  return String(Number(a) + Number(b))
 }
 
 function assertAddStrings () {
@@ -105,9 +111,13 @@ function assertAddStrings () {
  */
 
 // Uncomment when ready to test
-// assertAddStringsOrNumbers()
+assertAddStringsOrNumbers()
 
 function addStringsOrNumbers (a, b) {
+  if (typeof (a + b) ==='number') {
+    return a + b
+  }
+  return String(Number(a) + Number(b))
 }
 
 function assertAddStringsOrNumbers () {
@@ -122,9 +132,15 @@ function assertAddStringsOrNumbers () {
  */
 
 // Uncomment when ready to test
-// assertIsEmail()
+assertIsEmail()
 
 function isEmail (str) {
+  if (str.indexOf('@') !== -1){
+    if (str.substr(str.indexOf('@')).indexOf('.') !== -1) {
+      return true
+    }
+  }
+  return false
 }
 
 function assertIsEmail () {
@@ -139,9 +155,16 @@ function assertIsEmail () {
  */
 
 // Uncomment when ready to test
-// assertCountIf()
+assertCountIf()
 
 function countIf (testFunc, arr) {
+  var ans = 0
+  for (var i = 0; i < arr.length; i++){
+    if(testFunc(arr[i])) {
+      ans++
+    }
+  }
+  return ans
 }
 
 function assertCountIf () {
@@ -165,9 +188,16 @@ function assertCountIf () {
  */
 
 // Uncomment when ready to test
-// assertFilter()
+assertFilter()
 
 function filter (func, arr) {
+  var emailArr = []
+  for (var i = 0; i < arr.length; i++) {
+    if (func(arr[i])) {
+      emailArr.push(arr[i])
+    }
+  }
+  return emailArr
 }
 
 function assertFilter () {
@@ -181,9 +211,14 @@ function assertFilter () {
  */
 
 // Uncomment when ready to test
-// assertMap()
+assertMap()
 
 function map (func, arr) {
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    newArr.push(func(arr[i]))
+  }
+  return newArr
 }
 
 function assertMap () {
@@ -206,10 +241,11 @@ function assertMap () {
 var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 
 // Uncomment when ready to test
-// assertFilterStringsWithCommas()
+assertFilterStringsWithCommas()
 
 // does the string have a comma in it?
 function filterStringsWithCommas (str) {
+  
 }
 
 function assertFilterStringsWithCommas () {
