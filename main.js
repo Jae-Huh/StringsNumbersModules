@@ -1,4 +1,5 @@
 var assert = require('./utils/assert')
+var utils = require('./utils')
 var data = require('./data/data')
 var expectedArrayOfArrays = require('./data/array-of-arrays')
 
@@ -157,16 +158,6 @@ function assertIsEmail () {
 // Uncomment when ready to test
 assertCountIf()
 
-function countIf (testFunc, arr) {
-  var ans = 0
-  for (var i = 0; i < arr.length; i++){
-    if(testFunc(arr[i])) {
-      ans++
-    }
-  }
-  return ans
-}
-
 function assertCountIf () {
   var isString = function (s) {
     return typeof s === 'string'
@@ -190,16 +181,6 @@ function assertCountIf () {
 // Uncomment when ready to test
 assertFilter()
 
-function filter (func, arr) {
-  var emailArr = []
-  for (var i = 0; i < arr.length; i++) {
-    if (func(arr[i])) {
-      emailArr.push(arr[i])
-    }
-  }
-  return emailArr
-}
-
 function assertFilter () {
   var emails = filter(isEmail, data) || []
   assert(emails.length, 44, 'filter and isEmail returns the correct number of emails')
@@ -212,14 +193,6 @@ function assertFilter () {
 
 // Uncomment when ready to test
 assertMap()
-
-function map (func, arr) {
-  var newArr = []
-  for (var i = 0; i < arr.length; i++) {
-    newArr.push(func(arr[i]))
-  }
-  return newArr
-}
 
 function assertMap () {
   var someNumbers = [2, 4, 6]
